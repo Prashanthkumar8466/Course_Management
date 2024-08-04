@@ -89,6 +89,7 @@ form * {
     margin-top: 8px;
     font-size: 14px;
     font-weight:300;
+    border:1px solid black;
     border-radius: 3px;
     color:#000;
     background-color: rgba(255, 255, 255, 0.07);
@@ -101,7 +102,7 @@ form * {
     width: 100%;
     z-index: 1;
     margin-top: 30px;
-    color: #080710;
+    color: #ffff;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 600;
@@ -197,9 +198,20 @@ form * {
     margin-top:50px;
     height:400px;
   }
-        </style>
-    <div style="display:flex;justify-content:center;align-items:center">
-        <div>
+  @media (max-width: 768px) {
+    .admin-img{
+        display:none;
+    }
+    .circle{
+        display:none;
+    }
+    .maindiv{
+        margin-top:20%;
+    }
+  }
+ </style>
+    <div class="maindiv"style="display:flex;justify-content:center;align-items:center">
+        <div class='admin-img'>
             <img class="image" src="{% static 'images/online-training-1.png' %}">
         </div>
         <div class="inFormBackground">
