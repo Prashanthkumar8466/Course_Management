@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+    .title {
+        font-size: 2.5em;
+        margin: 0;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        display: inline-block;
+        border-radius: 10px;
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2em;
+        color: #1a237e;
+        background: rgba(255, 255, 255, 0.1);
+        display: inline-block;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .course-list {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .course {
+        background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+        margin: 15px;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        width: 220px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .course:hover {
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        transform: translateY(-10px);
+    }
+
+    .course-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .course-details {
+        font-size: 1em;
+        color: #666;
+    }
+    
+    .button {
+        background-color: #1e9cdc;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .button:hover {
+        background-color: #45a049;
+    }
+
+    .enroll {
+        margin-left: 1000px;
+    }
+
+    /* Table Styles */
+    .table-container {
+        margin-top: 40px;
+    }
+
+    table {
+        width: 80%;
+        border-collapse: collapse;
+        font-family: 'Open Sans', sans-serif;
+        margin-left:100px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #1a237e;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+</style>
+
+<div class="container">
+    {% if user.is_staff %}
+    <div class="table-container">
+        <h2>Staff View: Enrolled List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Course Title</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date of join</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if all %}
+                {% for course in all %}
+                <tr>
+                    <td>{{course.id}}</td>
+                    <td>{{ course.course.Title }}</td>
+                    <td>{{course.user.username}}</td>
+                    <td>{{course.user.email}}</td>
+                    <td>{{course.date}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="2">No courses available</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <ul class="course-list">
+        {% if data %}
+        {% for course in data %}
+        <li class="course">
+            <p class="course-title">{{ course.course.Title }}</p>
+            <p class="course-details">{{ course.course.Details }}</p><br>
+        </li>
+        {% endfor %}
+        {% else %}
+        <li class="course">
+            <p class="course-title">No Enroll list</p>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

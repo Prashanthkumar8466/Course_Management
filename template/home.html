@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+<style>
+    section{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+    }
+    .into{
+    }
+    img{
+        width:850px;
+        margin:20px;
+    }
+</style>
+<section>
+    <div class="intro">
+        <h1>Course Learning Management</h1>
+        <img src="{% static 'images/the-learning.jpg' %}" alt="Job Board Image">
+    </div>
+</section>
+{% endblock %}
