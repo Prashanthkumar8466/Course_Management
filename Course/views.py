@@ -18,7 +18,7 @@ def login_view(request):
         else:
            messages.error(request,'please check the details properly')
            return redirect('login')
-    return render(request,'user.html')
+    return render(request,'User.html')
 def admin_login_view(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -34,7 +34,7 @@ def admin_login_view(request):
         else:
            messages.error(request,'please check password | username')
            return redirect('Admin')
-    return render(request,'admin.html')
+    return render(request,'Admin.html')
 def logout_view(request):
     logout(request)
     return redirect('login')
