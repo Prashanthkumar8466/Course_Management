@@ -218,11 +218,6 @@ form * {
             <div class="circle"></div>
             <div class="circle"></div>
             <div class="inLoginForm">
-                {% if messages %}
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            {% endif %}
                 <form actions="{% url 'login' %}" method='post'>
                     {% csrf_token %}
                     <div class="tab-container">
@@ -247,5 +242,10 @@ form * {
                     <button class="submitForm" >Log In</button>
                 </form>
             </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <p style='margin-top:100px;margin-left:40px;font-size:20px;color:red'>{{ message }}</p>
+                {% endfor %}
+                {% endif %}
         </div>
 {% endblock %}

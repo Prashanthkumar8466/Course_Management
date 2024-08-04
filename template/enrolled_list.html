@@ -111,12 +111,30 @@
     tr:hover {
         background-color: #ddd;
     }
+    .desktop{
+        display:block;
+    }
+    .mobile{
+        display:none;
+    }
+    @media (max-width: 768px) {
+        .table-container table{
+            margin-left:0px;
+            width:100%;
+        }
+        .desktop{
+            display:none;
+        }
+        .mobile{
+            display:block;
+        }
+    }
 </style>
 
 <div class="container">
     {% if user.is_staff %}
-    <div class="table-container">
-        <h2>Staff View: Enrolled List</h2>
+    <div class="table-container desktop">
+        <h2>Enrolled List</h2>
         <table>
             <thead>
                 <tr>
@@ -135,6 +153,33 @@
                     <td>{{ course.course.Title }}</td>
                     <td>{{course.user.username}}</td>
                     <td>{{course.user.email}}</td>
+                    <td>{{course.date}}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="2">No courses available</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div class="table-container mobile">
+        <h2>Enrolled List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Title</th>
+                    <th>Name</th>
+                    <th>Date of join</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if all %}
+                {% for course in all %}
+                <tr>
+                    <td>{{ course.course.Title }}</td>
+                    <td>{{course.user.username}}</td>
                     <td>{{course.date}}</td>
                 </tr>
                 {% endfor %}

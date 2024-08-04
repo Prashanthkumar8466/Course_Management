@@ -95,6 +95,23 @@
         .button:hover {
             background-color: #45a049;
         }
+        .desktop{
+            display:block;
+        }
+        .mobile{
+            display:none;
+        }
+        @media (max-width: 768px) {
+            .desktop{
+                display:none;
+            }
+            .mobile{
+                display:block;
+            }
+            table {
+                width:100%
+            }
+        }
     </style>
         <style>
             table {
@@ -111,9 +128,28 @@
             th {
                 background-color: #f2f2f2;
             }
+            @media (max-width: 768px) {
+                table {
+                    width: 70%;
+                    border-collapse: collapse;
+                    background-color:#fff;
+                    margin-top:60px;
+                    margin-left:60px;
+                }
+                th, td {
+                    border: 1px solid #ddd;
+                    padding: 22.5px;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+                table{
+                    width:300px;
+                }
+            }
         </style>
         {% if data %}
-        <table>
+        <table class="desktop">
             <thead>
                 <tr>
                     <th>S.No</th>
@@ -128,6 +164,24 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{course.Title}}</td>
                     <td>{{course.Details}}</td>
+                    <td><a href="{% url 'deletecourse' pk=course.id %}"><button   class="button">Delete</button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table class="mobile">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Course</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{course.Title}}</td>
                     <td><a href="{% url 'deletecourse' pk=course.id %}"><button   class="button">Delete</button></a></td>
                 </tr>
                 {% endfor %}
