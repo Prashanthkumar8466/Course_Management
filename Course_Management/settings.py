@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coursemanagement$coursemanagement_db',
         'USER': 'coursemanagement',
-        'PASSWORD': 'Kumar@123',
+        'PASSWORD': 'database@123',
         'HOST': 'coursemanagement.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
