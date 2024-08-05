@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'Course_Management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test_db',
-        'USER': 'root',
+        'NAME': 'coursemanagement$coursemanagement_db',
+        'USER': 'coursemanagement',
         'PASSWORD': 'Kumar@123',
-        'HOST': '127.0.0.1',
-        'PORT': '3307',
+        'HOST': 'coursemanagement.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
 
