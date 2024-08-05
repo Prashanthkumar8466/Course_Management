@@ -102,3 +102,4 @@ def course_delete(request,pk):
 def manage_user(request):
     data=User.objects.all()
     return render(request,'userlist.html',{'data':data})
+#update
