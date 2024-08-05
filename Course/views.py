@@ -98,7 +98,7 @@ def course_View(request):
 def course_delete(request,pk):
     data=Course.objects.get(id=pk)
     data.delete()
-    return render(request,'delete_course.html',{'data':data})
+    return redirect('viewcourse')
 def manage_user(request):
     data=User.objects.all()
     return render(request,'userlist.html',{'data':data})
